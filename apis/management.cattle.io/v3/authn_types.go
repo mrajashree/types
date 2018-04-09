@@ -151,3 +151,40 @@ type ActiveDirectoryTestAndApplyInput struct {
 	Password              string                `json:"password"`
 	Enabled               bool                  `json:"enabled,omitempty"`
 }
+
+type OpenLDAPConfig struct {
+	metav1.TypeMeta   `json:",inline"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
+	AuthConfig        `json:",inline" mapstructure:",squash"`
+
+	Servers                     []string `json:"servers,omitempty"                     norman:"type=array[string],required"`
+	Port                        int64    `json:"port,omitempty"                        norman:"default=389"`
+	TLS                         bool     `json:"tls,omitempty"                         norman:"default=false"`
+	Certificate                 string   `json:"certificate,omitempty"`
+	DefaultLoginDomain          string   `json:"defaultLoginDomain,omitempty"`
+	ServiceAccountUsername      string   `json:"serviceAccountUsername,omitempty"      norman:"required"`
+	ServiceAccountPassword      string   `json:"serviceAccountPassword,omitempty"      norman:"type=password,required"`
+	UserDisabledBitMask         int64    `json:"userDisabledBitMask,omitempty"`
+	UserSearchBase              string   `json:"userSearchBase,omitempty"              norman:"required"`
+	UserSearchAttribute         string   `json:"userSearchAttribute,omitempty"         norman:"default=uid"`
+	UserLoginAttribute          string   `json:"userLoginAttribute,omitempty"          norman:"default=uid"`
+	UserObjectClass             string   `json:"userObjectClass,omitempty"             norman:"default=inetOrgPerson"`
+	UserNameAttribute           string   `json:"userNameAttribute,omitempty"           norman:"default=givenName"`
+	UserEnabledAttribute        string   `json:"userEnabledAttribute,omitempty"`
+	UserMemberAttribute         string   `json:"userMemberAttribute,omitempty"         norman:"default=memberOf"`
+	GroupSearchBase             string   `json:"groupSearchBase,omitempty"`
+	GroupSearchAttribute        string   `json:"groupSearchAttribute,omitempty"        norman:"default=cn"`
+	GroupObjectClass            string   `json:"groupObjectClass,omitempty"            norman:"default=groupOfNames"`
+	GroupNameAttribute          string   `json:"groupNameAttribute,omitempty"          norman:"default=cn"`
+	GroupDNAttribute            string   `json:"groupDNAttribute,omitempty"            norman:"default=entryDN"`
+	GroupMemberUserAttribute    string   `json:"groupMemberUserAttribute,omitempty"    norman:"default=entryDN"`
+	GroupMemberMappingAttribute string   `json:"groupMemberMappingAttribute,omitempty" norman:"default=memberUid"`
+	ConnectionTimeout           int64    `json:"connectionTimeout,omitempty"           norman:"default=5000"`
+}
+
+type OpenLDAPTestAndApplyInput struct {
+	OpenLDAPConfig OpenLDAPConfig `json:"openLdapConfig, omitempty"`
+	Username       string         `json:"username"`
+	Password       string         `json:"password"`
+	Enabled        bool           `json:"enabled,omitempty"`
+}

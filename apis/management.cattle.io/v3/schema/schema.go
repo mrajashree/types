@@ -326,7 +326,20 @@ func authnTypes(schemas *types.Schemas) *types.Schemas {
 			schema.CollectionMethods = []string{}
 			schema.ResourceMethods = []string{http.MethodGet, http.MethodPut}
 		}).
-		MustImport(&Version, v3.ActiveDirectoryTestAndApplyInput{})
+		MustImport(&Version, v3.ActiveDirectoryTestAndApplyInput{}).
+		// OpenLDAP Config
+		MustImportAndCustomize(&Version, v3.OpenLDAPConfig{}, func(schema *types.Schema) {
+			schema.BaseType = "authConfig"
+			schema.ResourceActions = map[string]types.Action{
+				"disable": {},
+				"testAndApply": {
+					Input: "openLDAPTestAndApplyInput",
+				},
+			}
+			schema.CollectionMethods = []string{}
+			schema.ResourceMethods = []string{http.MethodGet, http.MethodPut}
+		}).
+		MustImport(&Version, v3.OpenLDAPTestAndApplyInput{})
 
 }
 
