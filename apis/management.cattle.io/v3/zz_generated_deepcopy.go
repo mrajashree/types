@@ -1002,6 +1002,11 @@ func (in *ActiveDirectoryConfig) DeepCopyInto(out *ActiveDirectoryConfig) {
 		*out = make([]string, len(*in))
 		copy(*out, *in)
 	}
+	if in.UserSearchAttributes != nil {
+		in, out := &in.UserSearchAttributes, &out.UserSearchAttributes
+		*out = make([]string, len(*in))
+		copy(*out, *in)
+	}
 	return
 }
 

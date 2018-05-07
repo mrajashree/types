@@ -130,7 +130,7 @@ type ActiveDirectoryConfig struct {
 	ServiceAccountPassword      string   `json:"serviceAccountPassword,omitempty"      norman:"type=password,required"`
 	UserDisabledBitMask         int64    `json:"userDisabledBitMask,omitempty"         norman:"default=2"`
 	UserSearchBase              string   `json:"userSearchBase,omitempty"              norman:"required"`
-	UserSearchAttribute         string   `json:"userSearchAttribute,omitempty"         norman:"default=sAMAccountName"`
+	UserSearchAttributes        []string `json:"userSearchAttribute,omitempty"        norman:"default=[sAMAccountName sn]"`
 	UserLoginAttribute          string   `json:"userLoginAttribute,omitempty"          norman:"default=sAMAccountName"`
 	UserObjectClass             string   `json:"userObjectClass,omitempty"             norman:"default=person"`
 	UserNameAttribute           string   `json:"userNameAttribute,omitempty"           norman:"default=name"`
