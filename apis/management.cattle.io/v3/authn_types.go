@@ -135,6 +135,7 @@ type ActiveDirectoryConfig struct {
 	UserObjectClass             string   `json:"userObjectClass,omitempty"             norman:"default=person"`
 	UserNameAttribute           string   `json:"userNameAttribute,omitempty"           norman:"default=name"`
 	UserEnabledAttribute        string   `json:"userEnabledAttribute,omitempty"        norman:"default=userAccountControl"`
+	UserLastNameAttribute       string   `json:"userLastNameAttribute,omitempty" norman:"default=sn"`
 	GroupSearchBase             string   `json:"groupSearchBase,omitempty"`
 	GroupSearchAttribute        string   `json:"groupSearchAttribute,omitempty"        norman:"default=sAMAccountName"`
 	GroupObjectClass            string   `json:"groupObjectClass,omitempty"            norman:"default=group"`
