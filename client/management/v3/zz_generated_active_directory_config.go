@@ -33,7 +33,7 @@ const (
 	ActiveDirectoryConfigFieldUserLoginAttribute          = "userLoginAttribute"
 	ActiveDirectoryConfigFieldUserNameAttribute           = "userNameAttribute"
 	ActiveDirectoryConfigFieldUserObjectClass             = "userObjectClass"
-	ActiveDirectoryConfigFieldUserSearchAttribute         = "userSearchAttribute"
+	ActiveDirectoryConfigFieldUserSearchAttributes        = "userSearchAttribute"
 	ActiveDirectoryConfigFieldUserSearchBase              = "userSearchBase"
 	ActiveDirectoryConfigFieldUuid                        = "uuid"
 )
@@ -70,7 +70,7 @@ type ActiveDirectoryConfig struct {
 	UserLoginAttribute          string            `json:"userLoginAttribute,omitempty" yaml:"userLoginAttribute,omitempty"`
 	UserNameAttribute           string            `json:"userNameAttribute,omitempty" yaml:"userNameAttribute,omitempty"`
 	UserObjectClass             string            `json:"userObjectClass,omitempty" yaml:"userObjectClass,omitempty"`
-	UserSearchAttribute         string            `json:"userSearchAttribute,omitempty" yaml:"userSearchAttribute,omitempty"`
+	UserSearchAttributes        []string          `json:"userSearchAttribute,omitempty" yaml:"userSearchAttribute,omitempty"`
 	UserSearchBase              string            `json:"userSearchBase,omitempty" yaml:"userSearchBase,omitempty"`
 	Uuid                        string            `json:"uuid,omitempty" yaml:"uuid,omitempty"`
 }
