@@ -292,3 +292,7 @@ type PingConfig struct {
 type SamlConfigTestInput struct {
 	FinalRedirectURL string `json:"finalRedirectUrl"`
 }
+
+type ADFSConfig struct {
+	SamlConfig `json:",inline" mapstructure:",squash"`
+}
